@@ -1,5 +1,5 @@
 def raise_exception_msg(message=""):
     try:
-        raise TypeError('Python is cool')
+        raise TypeError('C is fun')
     except NameError as ne:
         print(ne)
