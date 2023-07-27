@@ -1,5 +1,5 @@
 def raise_exception():
     try:
-        raise_exception()
+        raise TypeError('HiThere')
     except TypeError as te:
-        print("Exception raised")
+        print(te)
