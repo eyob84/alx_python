@@ -13,7 +13,6 @@ def ff(*argv):
         print("{}: arguments".format(len(argv[0])-1))
         for i in range(1, len(x) ):
             print("{}: {}".format(i,x[i]))
-
-
-ff(sys.argv)
+if __name__ == "__main__":
+    ff(sys.argv)
   
