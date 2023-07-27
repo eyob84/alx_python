@@ -2,9 +2,9 @@ import sys
 def ff(*argv):
 
     # print(argv)
-    if len(argv[0])==0:
+    if len(argv[0])==1:
         print("0 arguments.") 
-    elif len(argv[0])==1:
+    elif len(argv[0])==2:
         print("1 argument:")
         print("1: {}".format(argv[0][1]))
     else:
