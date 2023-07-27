@@ -10,7 +10,7 @@ def ff(*argv):
     else:
         x = argv[0]
         # print(x)
-        print("{}: arguments:".format(len(argv[0])-1))
+        print("{} arguments:".format(len(argv[0])-1))
         for i in range(1, len(x) ):
             print("{}: {}".format(i,x[i]))
 if __name__ == "__main__":
