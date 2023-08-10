@@ -1,5 +1,5 @@
 from models.base import Base
-class Rectngle(Base):
+class Rectangle(Base):
     def __init__(self, width, height, x=0, y=0, id=None):
         """sadfafa """
         super().__init__(id)
