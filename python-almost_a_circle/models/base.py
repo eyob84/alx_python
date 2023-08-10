@@ -1,4 +1,4 @@
-class base():
+class Base():
     __nb_objects = 0
     def __init__(self, id=None):
             """this is a base class """
