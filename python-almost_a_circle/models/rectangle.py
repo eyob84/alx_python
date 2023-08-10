@@ -7,6 +7,12 @@ class Rectangle(Base):
         self.__height=height
         self.__y=y
         self.__x=x
+    @property
+    def width(self):
+        return self.__width
+    @width.setter
+    def width(self,value):
+        self.__width= value
 
     __doc__ = """
     this is documentation for my class
