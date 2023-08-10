@@ -12,7 +12,7 @@ class base():
     """
     
 
-doc = """
+__doc = """
 this is documentation for my module
 """
 
