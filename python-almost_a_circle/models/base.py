@@ -7,12 +7,12 @@ class base():
             else:
                  __nb_objects +=1  
                  self.id=__nb_objects
-    __doc = """
+    __doc__ = """
     this is documentation for my class
     """
     
 
-__doc = """
+__doc__ = """
 this is documentation for my module
 """
 
