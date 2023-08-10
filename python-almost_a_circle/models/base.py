@@ -6,7 +6,7 @@ class Base():
                   self.id = id
             else:
                  __nb_objects +=1  
-                 self.id=__nb_objects
+                 self.id=Base.__nb_objects
     __doc__ = """
     this is documentation for my class
     """
