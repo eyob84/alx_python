@@ -26,7 +26,7 @@ def doit(username, password, database):
     if state:
         print(f"{state.id}: {state.name}")
     else:
-        print("nothing")
+        print("Nothing")
 
     # Close the session
     session.close()
