@@ -1,48 +1,52 @@
-import sys
 import MySQLdb
+import sys
 
 
-# import sqlalchemy
-# import pymysql
-# pymysql.install_as_MySQLdb()
-# import pymysql as MySQLdb
-# import MySQLdb import _mysql
-# from MySQLdb.constants import FIELD_TYPE
-# Define the database connection details
-# username = sys.argv[1]
-# password = sys.argv[2]
-# database = sys.argv[3]
-# my_conv = { FIELD_TYPE.LONG: int }
-# db=_mysql.connect(conv=my_conv,host="localhost",user=username,password=password,database=database)
-# r=db.store_result()
-# # ...or...
-# # r=db.use_result()
-# r.fetch_row(maxrows=0)
-# print(MySQLdb.__version__)
-# print(sqlalchemy.__version__)
-def dostg():
-    # Open database connection
-    u = sys.argv[1]
-    p = sys.argv[2]
-    d = sys.argv[3]
-    e = sys.argv[4]
-   
-    db = MySQLdb.connect("localhost", u, p, d, 3306)
+def search_states(username, password, database, state_name):
+    try:
+        # Connect to MySQL server
+        conn = MySQLdb.connect(
+            host='localhost',
+            port=3306,
+            user=username,
+            passwd=password,
+            db=database
+        )
 
-    # prepare a cursor object using cursor() method
-    cursor = db.cursor()
-    query = "SELECT * FROM states WHERE name = %s ORDER BY id ASC;"
-    # execute SQL query using execute() method.
-    cursor.execute(query, (e,))
+        # Create a cursor object to execute SQL queries
+        cursor = conn.cursor()
 
-    # Fetch a single row using fetchone() method.
-    data = cursor.fetchall()
-    for i in data:
-        print(i, sep="\n")
+        # Prepare the SQL query with a parameterized query
+        query = "SELECT * FROM states WHERE name = %s ORDER BY id ASC; "
 
-    # disconnect from server
-    db.close()
+        # Execute the query with the state name as a parameter
+        cursor.execute(query, (state_name,))
 
+        # Fetch all the rows returned by the query
+        rows = cursor.fetchall()
+
+        # Display the results
+        if rows:
+            for row in rows:
+                print(row)
+        else:
+            # print("No matching states found.")
+            pass
+
+        # Close the cursor and connection
+        cursor.close()
+        conn.close()
+
+    except MySQLdb.Error as e:
+        print("Error connecting to MySQL:", e)
+        sys.exit(1)
 
 if __name__ == "__main__":
-    dostg()
+    # Get the arguments
+    username = sys.argv[1]
+    password = sys.argv[2]
+    database = sys.argv[3]
+    state_name = sys.argv[4]
+
+    # Call the search_states function with the provided arguments
+    search_states(username, password, database, state_name)
