@@ -17,7 +17,7 @@ def search_states(username, password, database, state_name):
         cursor = conn.cursor()
 
         # Prepare the SQL query with a parameterized query
-        query = """SELECT * FROM states WHERE BINARY name = '$state_name' ORDER BY id ASC;"""
+        query = """SELECT * FROM states WHERE BINARY name = '{}' ORDER BY id ASC;""".format(state_name)
 
         # Execute the query with the state name as a parameter
         cursor.execute(query)
