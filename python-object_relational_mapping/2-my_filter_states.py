@@ -1,58 +1,55 @@
-import MySQLdb
 import sys
+import MySQLdb
+
+# import sqlalchemy
+# import pymysql
+# pymysql.install_as_MySQLdb()
+# import pymysql as MySQLdb
+# import MySQLdb import _mysql
+# from MySQLdb.constants import FIELD_TYPE
+# Define the database connection details
+# username = sys.argv[1]
+# password = sys.argv[2]
+# database = sys.argv[3]
+# my_conv = { FIELD_TYPE.LONG: int }
+# db=_mysql.connect(conv=my_conv,host="localhost",user=username,password=password,database=database)
+# r=db.store_result()
+# # ...or...
+# # r=db.use_result()
+# r.fetch_row(maxrows=0)
+# print(MySQLdb.__version__)
+# print(sqlalchemy.__version__)
 
 
-def search_states(username, password, database, state_name):
-    try:
-        # Connect to MySQL server
-        conn = MySQLdb.connect(
-            host='localhost',
-            port=3306,
-            user=username,
-            passwd=password,
-            db=database
-        )
+def dostg():
+    # Open database connection
+    u = sys.argv[1]
+    p = sys.argv[2]
+    d = sys.argv[3]
+    # db = MySQLdb.connect(host="localhost", user=u, password=p,
+    # database=d, port=3306,collation = "utf8mb4_general_ci")
+    db = MySQLdb.connect("localhost", u, p, d, 3306)
+    # prepare a cursor object using cursor() method
+    cursor = db.cursor()
 
-        # Create a cursor object to execute SQL queries
-        cursor = conn.cursor()
+    # execute SQL query using execute() method.
+    # cursor.execute("ALTER TABLE states MODIFY COLUMN
+    # name VARCHAR(250) COLLATE Latin1_General_CS_AS")
 
-        # Prepare the SQL query with a parameterized query
-        query = """SELECT * FROM states WHERE BINARY name = '{}' ORDER BY id ASC;""".format(state_name)
+    cursor.execute("""SELECT *
+FROM states WHERE name  = '{}'
+ORDER BY id ASC; """.format(sys.argv[4]))
+# COLLATE latin1_general_cs
+#  "SELECT * FROM states WHERE name = '{}' ORDER BY id ASC;".format()
+    # Fetch a single row using fetchone() method.
+    data = cursor.fetchall()
+    for i in data:
+        if i[1] == sys.argv[4]:
+            print(i, sep="\n")
 
-        # Execute the query with the state name as a parameter
-        cursor.execute(query)
+    # disconnect from server
+    db.close()
 
-        # Fetch all the rows returned by the query
-        # -------
-        # may be diferent in some cases read the instructions
-        
-        rows = cursor.fetchall()
-        
-
-        # Display the results not the same for all change as the task demands 
-        
-        if rows:
-            for row in rows:
-                print(row)
-        else:
-            # print()
-            pass
-        # -------
-
-        # Close the cursor and connection
-        cursor.close()
-        conn.close()
-
-    except MySQLdb.Error as e:
-        print("Error connecting to MySQL:", e)
-        sys.exit(1)
 
 if __name__ == "__main__":
-    # Get the arguments
-    username = sys.argv[1]
-    password = sys.argv[2]
-    database = sys.argv[3]
-    state_name = sys.argv[4]
-
-    # Call the search_states function with the provided arguments
-    search_states(username, password, database, state_name)
+    dostg()
