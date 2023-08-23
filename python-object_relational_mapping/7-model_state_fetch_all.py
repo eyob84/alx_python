@@ -22,9 +22,9 @@ def doit(username, password, database):
     states = session.query(State).order_by(State.id).all()
 
     # Print the results
-    print(states)
-    # for state in states:
-    #     print(f"{state.id}: {state.name}")
+    # print(states)
+    for state in states:
+        print(f"{state.id}:  {state.name}")
 
     # Close the session
     session.close()
