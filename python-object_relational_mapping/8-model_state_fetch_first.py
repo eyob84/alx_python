@@ -19,12 +19,11 @@ def doit(username, password, database):
     session = Session()
 
     # Query all State objects and sort by id
-    states = session.query(State).order_by(State.id).first()
+    state = session.query(State).order_by(State.id).first()
 
     # Print the results
     # print(states)
-    for state in states:
-        print(f"{state.id}: {state.name}")
+    print(f"{state.id}: {state.name}")
 
     # Close the session
     session.close()
