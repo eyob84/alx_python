@@ -31,7 +31,7 @@ def search_states(username, password, database, state_name):
         # Display the results
         if rows:
             for i, row in enumerate(rows):
-                print(row, end=', ' if i < len(rows)-1 else '\n')
+                print(row[0], end=', ' if i < len(rows)-1 else '\n')
         else:
             print()
 
