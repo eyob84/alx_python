@@ -1,6 +1,8 @@
 import MySQLdb
 import sys
-def states(username, password,database):
+
+
+def states(username, password, database):
     try:
         conn = MySQLdb.connect(
                 host='localhost',
@@ -15,11 +17,11 @@ def states(username, password,database):
         rows = cursor.fetchall()
 
         if rows:
-                    for row in rows:
-                        print(row)
+            for row in rows:
+             print(row)
         else:
-                    # print()
-                    pass
+            # print()
+            pass
         cursor.close()
         conn.close()
 
