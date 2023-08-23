@@ -2,7 +2,7 @@ import MySQLdb
 import sys
 
 
-def search_states(username, password, database, state_name):
+def search_states(username, password, database):
     try:
         # Connect to MySQL server
         conn = MySQLdb.connect(
@@ -18,8 +18,8 @@ def search_states(username, password, database, state_name):
 
         # Prepare the SQL query with a parameterized query
         query = """ SELECT * FROM cities
-        JOIN states ON  cities.state_id = states.id  WHERE states.name = %s ORDER BY cities.id ASC; """
-        cursor.execute(query, (state_name,))
+        JOIN states ON  cities.state_id = states.id ORDER BY cities.id ASC; """
+        cursor.execute(query)
         rows = cursor.fetchall()
         if rows:
             for row in rows:
@@ -40,7 +40,7 @@ if __name__ == "__main__":
     username = sys.argv[1]
     password = sys.argv[2]
     database = sys.argv[3]
-    state_name = sys.argv[4]
+
 
     # Call the search_states function with the provided arguments
     search_states(username, password, database, state_name)
