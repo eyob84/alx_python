@@ -23,7 +23,10 @@ def doit(username, password, database):
 
     # Print the results
     # print(states)
-    print(f"{state.id}: {state.name}")
+    if state:
+        print(f"{state.id}: {state.name}")
+    else:
+        print("nothing")
 
     # Close the session
     session.close()
