@@ -4,7 +4,6 @@ import sys
 
 def search_states(username, password, database):
     try:
-    
         conn = MySQLdb.connect(
             host='localhost',
             port=3306,
@@ -19,7 +18,6 @@ WHERE BINARY name LIKE 'N%'
 ORDER BY id ASC;
  """
         cursor.execute(query)
-        
         rows = cursor.fetchall()
         if rows:
             for row in rows:
