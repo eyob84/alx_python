@@ -25,14 +25,15 @@ def dostg():
     u = sys.argv[1]
     p = sys.argv[2]
     d = sys.argv[3]
+    e = sys,argv[4]
    
-    db = MySQLdb.connect("localhost", u, p, d, 3306)
+    db = MySQLdb.connect("localhost", u, p, d, e, 3306)
 
     # prepare a cursor object using cursor() method
     cursor = db.cursor()
 
     # execute SQL query using execute() method.
-    cursor.execute("SELECT * FROM states  ORDER BY id ASC;")
+    cursor.execute("SELECT * FROM states WHERE name = '{}' ORDER BY id ASC;" .format(e))
 
     # Fetch a single row using fetchone() method.
     data = cursor.fetchall()
