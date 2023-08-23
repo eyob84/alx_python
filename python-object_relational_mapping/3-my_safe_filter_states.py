@@ -31,9 +31,9 @@ def dostg():
 
     # prepare a cursor object using cursor() method
     cursor = db.cursor()
-
+    query = "SELECT * FROM states WHERE name = %s ORDER BY id ASC;"
     # execute SQL query using execute() method.
-    cursor.execute("SELECT * FROM states WHERE name = '{}' ORDER BY id ASC;" .format(e))
+    cursor.execute(query, (e,))
 
     # Fetch a single row using fetchone() method.
     data = cursor.fetchall()
