@@ -24,7 +24,7 @@ def doit(username, password, database):
     # Print the results
     # print(states)
     for state in states:
-        print(f"{state.id}:  {state.name}")
+        print(f"{state.id}: {state.name}")
 
     # Close the session
     session.close()
