@@ -14,7 +14,10 @@ def search_states(username, password, database):
         )
 
         cursor = conn.cursor()
-        query = """ SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC; """
+        query = """ SELECT * FROM states
+WHERE BINARY name LIKE 'N%'
+ORDER BY id ASC;
+ """
         cursor.execute(query)
         
         rows = cursor.fetchall()
