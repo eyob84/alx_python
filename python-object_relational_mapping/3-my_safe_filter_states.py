@@ -27,7 +27,7 @@ def dostg():
     d = sys.argv[3]
     e = sys.argv[4]
    
-    db = MySQLdb.connect("localhost", u, p, d, e, 3306)
+    db = MySQLdb.connect("localhost", u, p, d, 3306)
 
     # prepare a cursor object using cursor() method
     cursor = db.cursor()
