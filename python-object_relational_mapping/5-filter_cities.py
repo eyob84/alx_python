@@ -17,7 +17,7 @@ def search_states(username, password, database, state_name):
         cursor = conn.cursor()
 
         # Prepare the SQL query with a parameterized query
-        query = """ SELECT cities.name, states.name FROM cities
+        query = """ SELECT cities.name FROM cities
         JOIN states ON  cities.state_id = states.id  WHERE states.name = %s ORDER BY cities.id ASC; """
         cursor.execute(query, (state_name,))
         rows = cursor.fetchall()
