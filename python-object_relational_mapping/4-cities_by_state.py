@@ -43,4 +43,4 @@ if __name__ == "__main__":
 
 
     # Call the search_states function with the provided arguments
-    search_states(username, password, database, state_name)
+    search_states(username, password, database)
