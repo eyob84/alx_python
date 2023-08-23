@@ -25,7 +25,7 @@ def dostg():
     u = sys.argv[1]
     p = sys.argv[2]
     d = sys.argv[3]
-    e = sys,argv[4]
+    e = sys.argv[4]
    
     db = MySQLdb.connect("localhost", u, p, d, e, 3306)
 
