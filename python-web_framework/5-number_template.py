@@ -11,19 +11,16 @@ def hbnb():
     return "HBNB"
 
 @app.route('/c/<text>', strict_slashes=False)
-@app.route('/c', strict_slashes=False)
-def display_c_text(text=""):
-    text = text.replace('_', ' ') if text else "is cool"
-    return f"C {text}"
+def c_text(text):
+    return f"C {text.replace('_', ' ')}"
 
 @app.route('/python/<text>', strict_slashes=False)
-@app.route('/python', strict_slashes=False)
-def display_python_text(text=""):
-    text = text.replace('_', ' ') if text else "is cool"
-    return f"Python {text}"
+@app.route('/python/', strict_slashes=False, defaults={'text': 'is_cool'})
+def python_text(text):
+    return f"Python {text.replace('_', ' ')}"
 
 @app.route('/number/<int:n>', strict_slashes=False)
-def display_number(n):
+def number(n):
     return f"{n} is a number"
 
 @app.route('/number_template/<int:n>', strict_slashes=False)
@@ -32,6 +29,7 @@ def number_template(n):
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)
+
 
 
 __doc__ = """
