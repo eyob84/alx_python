@@ -12,7 +12,7 @@ def hbnb():
 
 @app.route('/c/<text>', strict_slashes=False)
 def display_c_text(text):
-    text = text.replace('_', ' ')  # Replace underscore with space
+    text = text.replace('_', ' ')
     return f"C {text}"
 
 
